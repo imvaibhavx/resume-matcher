@@ -2,11 +2,13 @@ from sentence_transformers import SentenceTransformer, util
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-resume = "I know Python and machine learning"
-good_job = "Looking for a Python and ML intern"
-bad_job = "Chef needed for a busy restaurant"
+with open("samples/resume.txt", encoding="utf-8") as f:
+    resume = f.read()
 
-embeddings = model.encode([resume, good_job, bad_job])
+with open("samples/job.txt", encoding="utf-8") as f:
+    job = f.read()
 
-print("resume vs good job:", util.cos_sim(embeddings[0], embeddings[1]).item())
-print("resume vs bad job: ", util.cos_sim(embeddings[0], embeddings[2]).item())
+embeddings = model.encode([resume, job])
+score = util.cos_sim(embeddings[0], embeddings[1]).item()
+
+print(f"Match score: {score:.2f}")

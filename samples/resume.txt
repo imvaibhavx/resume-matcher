@@ -1,0 +1,33 @@
+MAYA SHAH
+Junior Data Analyst
+maya.shah@example.com | (415) 555-0142 | Oakland, CA | linkedin.com/in/maya-shah-example
+
+SUMMARY
+Entry-level data analyst with 1.5 years of experience supporting reporting and operations teams. Uses SQL and Excel to clean, reconcile, and analyze data, and Tableau to build clear dashboards. Comfortable explaining findings to nontechnical partners and documenting repeatable processes. Basic familiarity with Python; eager to deepen automation skills.
+
+SKILLS
+SQL (joins, CTEs, aggregations) | Excel (PivotTables, XLOOKUP, charts) | Tableau | Data cleaning and QA | KPI reporting | Basic Python (pandas) | Presentation and documentation
+
+EXPERIENCE
+Data Operations Assistant | Northstar Learning Services | Oakland, CA | Jun 2024 - Present
+- Prepare weekly enrollment and course-completion reports for a 12-person operations team using SQL queries and Excel.
+- Reconcile records across three source files, flagging duplicate and missing values; reduced recurring manual corrections by about 20% through a documented QA checklist.
+- Built and maintain a Tableau dashboard tracking enrollment, attendance, and course completion by program and month.
+- Summarize unusual trends for program managers and answer follow-up questions with supporting data.
+
+Reporting Intern | Harborview Community Market | Oakland, CA | Jan 2024 - May 2024
+- Cleaned and combined approximately 8,000 monthly transaction rows in Excel for sales and inventory reporting.
+- Wrote basic SQL queries to compare product sales across stores and identify seasonal patterns.
+- Presented a short analysis of out-of-stock items to the store operations lead; findings informed a pilot reorder review.
+
+PROJECT
+Customer Retention Analysis | Portfolio Project | 2024
+- Analyzed a public subscription dataset with SQL and Excel; defined monthly churn and compared retention by signup cohort.
+- Created a Tableau story with three charts and a plain-language summary of patterns and limitations.
+
+EDUCATION
+B.S. Applied Mathematics | East Bay State University | Oakland, CA | May 2024
+Relevant coursework: Statistics, Database Concepts, Data Visualization
+
+ADDITIONAL
+Work authorization: Authorized to work in the United States

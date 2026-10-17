@@ -1,0 +1,38 @@
+JUNIOR DATA ANALYST
+BrightPath Retail Group | Oakland, CA | Full-time, hybrid
+
+ABOUT THE ROLE
+BrightPath Retail Group is a fictional regional retailer. We are looking for a junior data analyst to help our operations and merchandising teams turn day-to-day business data into reliable reporting and useful insights. This is an early-career role with guidance from a senior analyst.
+
+WHAT YOU'LL DO
+- Query sales, inventory, and store operations data using SQL to answer recurring and ad hoc questions.
+- Clean and validate datasets; investigate missing, duplicate, or inconsistent records and document data issues.
+- Maintain weekly and monthly reports and dashboards for business stakeholders.
+- Use Excel to reconcile data, analyze trends, and prepare clear summaries.
+- Build or update visualizations in Power BI and help standardize KPI definitions.
+- Share findings with nontechnical partners and explain assumptions and limitations.
+- Work with the analytics team to improve repeatable reporting workflows.
+
+WHAT WE'RE LOOKING FOR
+- Bachelor's degree in analytics, mathematics, statistics, information systems, business, or a related field, or equivalent practical experience.
+- 0-2 years of experience in an analyst, reporting, operations, or internship role.
+- Working knowledge of SQL, including joins, filtering, grouping, and aggregations.
+- Strong Excel skills, including PivotTables, lookup formulas, and charts.
+- Experience with at least one business intelligence tool; Power BI experience is preferred.
+- Careful approach to data quality, validation, and documenting work.
+- Clear written and verbal communication, including the ability to explain results to nontechnical audiences.
+- Interest in learning Python or another scripting language for analysis and automation.
+
+NICE TO HAVE
+- Familiarity with Python and pandas.
+- Experience with retail, inventory, point-of-sale, or merchandising data.
+- Exposure to cloud data warehouses such as Snowflake, BigQuery, or Redshift.
+
+ROLE DETAILS
+Location: Oakland, California (hybrid; three days onsite per week)
+Employment: Full-time
+Experience level: Entry level / junior
+Compensation: Fictional test posting; no real salary range is provided.
+
+FICTIONAL TEST DATA NOTICE
+This job description is synthetic and is provided only for testing resume-to-job-description fit evaluation. BrightPath Retail Group is fictional.

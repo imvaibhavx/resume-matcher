@@ -1,0 +1,38 @@
+DATA QUALITY ANALYST
+Northstar Health Insights | Oakland, CA | Full-time, hybrid
+
+ABOUT THE ROLE
+Northstar Health Insights is a fictional analytics company that helps community health organizations understand service access and program outcomes. The Data Quality Analyst will support the analytics team by preparing reliable datasets, maintaining recurring reports, and investigating data issues.
+
+WHAT YOU'LL DO
+- Write SQL queries to extract, combine, and summarize program and service data.
+- Validate incoming data, investigate missing or inconsistent values, and document resolution steps.
+- Maintain dashboards and recurring KPI reports for internal teams and partner organizations.
+- Use Excel to reconcile data and investigate changes in monthly results.
+- Create clear visual summaries using Tableau or Power BI.
+- Explain findings and data limitations to colleagues who do not work in analytics.
+- Collaborate with analysts and program staff to improve reporting definitions and workflows.
+
+WHAT WE'RE LOOKING FOR
+- Bachelor's degree in a quantitative, business, public health, or information-related field, or equivalent experience.
+- 0-2 years of experience in data analysis, reporting, research, or operations.
+- Working SQL skills, including joins, aggregations, and filtering.
+- Strong Excel skills, including PivotTables and lookup formulas.
+- Experience creating charts or dashboards in Tableau or Power BI.
+- Careful attention to detail and a structured approach to data quality checks.
+- Clear communication and an ability to describe analytical results in plain language.
+- Willingness to learn Python for analysis and repeatable reporting.
+
+NICE TO HAVE
+- Familiarity with Python and pandas.
+- Experience working with health, education, or other program services data.
+- Exposure to a cloud data warehouse or data documentation practices.
+
+ROLE DETAILS
+Location: Oakland, California (hybrid; two days onsite per week)
+Employment: Full-time
+Experience level: Entry level / junior
+Compensation: Fictional test posting; no real salary range is provided.
+
+FICTIONAL TEST DATA NOTICE
+This job description is synthetic and is provided only for testing resume-to-job-description fit evaluation. Northstar Health Insights is fictional.

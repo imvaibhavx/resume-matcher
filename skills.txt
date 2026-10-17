@@ -1,0 +1,40 @@
+python
+sql
+excel
+tableau
+power bi
+pandas
+machine learning
+git
+docker
+aws
+statistics
+data cleaning
+data visualization
+dashboards
+reporting
+snowflake
+bigquery
+redshift
+mailchimp
+social media
+r
+postgresql
+mysql
+microsoft power bi
+looker
+google analytics
+a/b testing
+hypothesis testing
+regression analysis
+exploratory data analysis
+etl processes
+data modeling
+dbt
+apache airflow
+spark
+data storytelling
+kpi development
+stakeholder management
+presentation skills
+documentation

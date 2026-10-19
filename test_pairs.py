@@ -1,5 +1,5 @@
 from sentence_transformers import SentenceTransformer, util
-
+from aliases import expand_aliases
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
 pairs = [
@@ -13,5 +13,5 @@ pairs = [
 ]
 
 for a, b in pairs:
-    score = util.cos_sim(model.encode(a), model.encode(b)).item()
+    score = util.cos_sim(model.encode(expand_aliases(a)), model.encode(expand_aliases(b))).item()
     print(f"{score:.2f} | {a}  <->  {b}")

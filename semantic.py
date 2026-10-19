@@ -19,8 +19,18 @@ job_emb = model.encode(job_chunks)
 
 sims = util.cos_sim(job_emb, resume_emb)
 
+def label(score):
+    if score >= 0.50:
+        return "COVERED"
+    if score >= 0.35:
+        return "PARTIAL"
+    return "GAP"
+
+
 for i, job_chunk in enumerate(job_chunks):
     best = sims[i].argmax().item()
     score = sims[i][best].item()
-    print(f"{score:.2f} | {job_chunk[:70]}")
-    print(f"       closest resume line: {resume_chunks[best][:70]}")
+    status = label(score)
+    print(f"[{status:7}] {score:.2f} | {job_chunk[:70]}")
+    if status != "GAP":
+        print(f"            evidence: {resume_chunks[best][:70]}")

@@ -34,3 +34,17 @@ for i, job_chunk in enumerate(job_chunks):
     print(f"[{status:7}] {score:.2f} | {job_chunk[:70]}")
     if status != "GAP":
         print(f"            evidence: {resume_chunks[best][:70]}")
+
+results = []
+for i, job_chunk in enumerate(job_chunks):
+    score = sims[i].max().item()
+    results.append((label(score), score, job_chunk))
+
+covered = sum(1 for r in results if r[0] == "COVERED")
+partial = sum(1 for r in results if r[0] == "PARTIAL")
+gaps = [r for r in results if r[0] == "GAP"]
+
+print(f"\nSUMMARY: {covered} covered, {partial} partial, {len(gaps)} gaps out of {len(results)} requirements")
+print("\nBIGGEST GAPS (lowest scores first):")
+for _, score, text in sorted(gaps, key=lambda r: r[1])[:5]:
+    print(f"  {score:.2f} | {text[:70]}")

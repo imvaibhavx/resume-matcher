@@ -23,7 +23,7 @@ Job applications are a guessing game: you never know what's missing until you ge
 ## Roadmap
 
 - [x] Week 1: Compare two texts and output a similarity score
-- [ ] Week 2: Skill extraction and missing-skills list
+- [x] Week 2: Skill extraction and missing-skills list
 - [ ] Week 3: Streamlit web app and live deployment
 - [ ] Week 4: Docker, tests, and write-up
 

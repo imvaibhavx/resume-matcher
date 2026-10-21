@@ -28,6 +28,7 @@ for job_file in sorted(Path("private/jobs").glob("*.txt")):
 
     job_chunks = split_into_chunks(job)
     job_chunks = [c for c in job_chunks if not c.endswith(":")]
+    job_chunks = [c for c in job_chunks if not c.isupper() and not c.lower().startswith(("compensation", "work hours", "location", "employment", "remote work", "minimum cgpa", "only students", "no salary"))]
     job_emb = model.encode(job_chunks)
     sims = util.cos_sim(job_emb, resume_emb)
 

@@ -13,6 +13,21 @@ def label(score):
         return "PARTIAL"
     return "GAP"
 
+SKIP_STARTS = ("compensation", "work hours", "location", "employment", "remote work",
+               "minimum cgpa", "only students", "no salary", "experience level",
+               "potential next step", "must be available")
+
+
+def get_job_chunks(path):
+    text = Path(path).read_text(encoding="utf-8")
+    chunks = split_into_chunks(text)
+    chunks = [c for c in chunks
+              if not c.endswith(":")
+              and not c.isupper()
+              and "|" not in c
+              and not c.lower().startswith(SKIP_STARTS)]
+    return [expand_aliases(c) for c in chunks]
+
 
 # Resume: prepared once
 resume = expand_aliases(Path("private/resume.txt").read_text(encoding="utf-8"))
@@ -24,11 +39,7 @@ resume_emb = model.encode(resume_chunks)
 for job_file in sorted(Path("private/jobs").glob("*.txt")):
     # YOUR TURN: replace the ... below with code that reads this job file
     # and expands aliases. Hint: matcher.py already reads a job_file.
-    job = expand_aliases(job_file.read_text(encoding="utf-8"))
-
-    job_chunks = split_into_chunks(job)
-    job_chunks = [c for c in job_chunks if not c.endswith(":")]
-    job_chunks = [c for c in job_chunks if not c.isupper() and not c.lower().startswith(("compensation", "work hours", "location", "employment", "remote work", "minimum cgpa", "only students", "no salary"))]
+    job_chunks = get_job_chunks(job_file)
     job_emb = model.encode(job_chunks)
     sims = util.cos_sim(job_emb, resume_emb)
 

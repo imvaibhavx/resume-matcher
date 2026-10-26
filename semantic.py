@@ -5,6 +5,10 @@ from aliases import expand_aliases
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
+SKIP_STARTS = ("compensation", "work hours", "location", "employment", "remote work",
+               "minimum cgpa", "only students", "no salary", "experience level",
+               "potential next step", "must be available")
+
 
 def label(score):
     if score >= 0.50:
@@ -13,13 +17,8 @@ def label(score):
         return "PARTIAL"
     return "GAP"
 
-SKIP_STARTS = ("compensation", "work hours", "location", "employment", "remote work",
-               "minimum cgpa", "only students", "no salary", "experience level",
-               "potential next step", "must be available")
 
-
-def get_job_chunks(path):
-    text = Path(path).read_text(encoding="utf-8")
+def get_job_chunks(text):
     chunks = split_into_chunks(text)
     chunks = [c for c in chunks
               if not c.endswith(":")
@@ -28,11 +27,12 @@ def get_job_chunks(path):
               and not c.lower().startswith(SKIP_STARTS)]
     return [expand_aliases(c) for c in chunks]
 
-def get_resume_chunks(path):
-    text = Path(path).read_text(encoding="utf-8")
+
+def get_resume_chunks(text):
     chunks = split_into_chunks(text)
     chunks = [c for c in chunks if not c.lower().startswith(("interests", "hobbies"))]
     return [expand_aliases(c) for c in chunks]
+
 
 def match_requirements(job_chunks, resume_chunks, resume_emb):
     job_emb = model.encode(job_chunks)
@@ -47,26 +47,34 @@ def match_requirements(job_chunks, resume_chunks, resume_emb):
     return results
 
 
-# Resume: prepared once
-resume_chunks = get_resume_chunks("private/resume.txt")
-resume_emb = model.encode(resume_chunks)
+def analyze(resume_text, job_text):
+    resume_chunks = get_resume_chunks(resume_text)
+    resume_emb = model.encode(resume_chunks)
+    job_chunks = get_job_chunks(job_text)
+    return match_requirements(job_chunks, resume_chunks, resume_emb)
 
-# Jobs: one report per file
-for job_file in sorted(Path("private/jobs").glob("*.txt")):
-    job_chunks = get_job_chunks(job_file)
-    results = match_requirements(job_chunks, resume_chunks, resume_emb)
 
-    print(f"\n===== {job_file.name} =====")
-    for status, score, text, evidence in results:
-        print(f"[{status:7}] {score:.2f} | {text[:70]}")
-        if evidence:
-            print(f"            evidence: {evidence[:70]}")
+if __name__ == "__main__":
+    resume_text = Path("private/resume.txt").read_text(encoding="utf-8")
+    resume_chunks = get_resume_chunks(resume_text)
+    resume_emb = model.encode(resume_chunks)
 
-    covered = sum(1 for r in results if r[0] == "COVERED")
-    partial = sum(1 for r in results if r[0] == "PARTIAL")
-    gaps = [r for r in results if r[0] == "GAP"]
+    for job_file in sorted(Path("private/jobs").glob("*.txt")):
+        job_text = job_file.read_text(encoding="utf-8")
+        job_chunks = get_job_chunks(job_text)
+        results = match_requirements(job_chunks, resume_chunks, resume_emb)
 
-    print(f"\nSUMMARY: {covered} covered, {partial} partial, {len(gaps)} gaps out of {len(results)} requirements")
-    print("BIGGEST GAPS:")
-    for r in sorted(gaps, key=lambda r: r[1])[:5]:
-        print(f"  {r[1]:.2f} | {r[2][:70]}")
+        print(f"\n===== {job_file.name} =====")
+        for status, score, text, evidence in results:
+            print(f"[{status:7}] {score:.2f} | {text[:70]}")
+            if evidence:
+                print(f"            evidence: {evidence[:70]}")
+
+        covered = sum(1 for r in results if r[0] == "COVERED")
+        partial = sum(1 for r in results if r[0] == "PARTIAL")
+        gaps = [r for r in results if r[0] == "GAP"]
+
+        print(f"\nSUMMARY: {covered} covered, {partial} partial, {len(gaps)} gaps out of {len(results)} requirements")
+        print("BIGGEST GAPS:")
+        for r in sorted(gaps, key=lambda r: r[1])[:5]:
+            print(f"  {r[1]:.2f} | {r[2][:70]}")

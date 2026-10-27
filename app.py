@@ -14,7 +14,29 @@ if st.button("Match"):
     else:
         with st.spinner("Matching..."):
             results = analyze(resume_text, job_text)
-        for status, score, text, evidence in results:
-            st.write(f"**[{status}] {score:.2f}** | {text}")
-            if evidence:
-                st.caption(f"Evidence: {evidence}")
+
+        if not results:
+            st.warning("No requirements found in the job description. Try pasting only the responsibilities and requirements.")
+        else:
+            covered = [r for r in results if r[0] == "COVERED"]
+            partial = [r for r in results if r[0] == "PARTIAL"]
+            gaps = [r for r in results if r[0] == "GAP"]
+
+            col1, col2, col3 = st.columns(3)
+            col1.metric("Covered", len(covered))
+            col2.metric("Partial", len(partial))
+            col3.metric("Gaps", len(gaps))
+
+            st.subheader("Biggest gaps")
+            for status, score, text, evidence in sorted(gaps, key=lambda r: r[1])[:5]:
+                st.write(f"**{score:.2f}** | {text}")
+
+            with st.expander(f"Partial matches ({len(partial)})"):
+                for status, score, text, evidence in partial:
+                    st.write(f"**{score:.2f}** | {text}")
+                    st.caption(f"Evidence: {evidence}")
+
+            with st.expander(f"Covered ({len(covered)})"):
+                for status, score, text, evidence in covered:
+                    st.write(f"**{score:.2f}** | {text}")
+                    st.caption(f"Evidence: {evidence}")

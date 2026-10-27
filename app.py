@@ -1,5 +1,6 @@
 import streamlit as st
 from semantic import analyze
+from skills import load_skills, find_skills
 
 st.title("Resume-to-Job Matcher")
 st.write("Paste your resume and a job description to see how well they match.")
@@ -30,6 +31,14 @@ if st.button("Match"):
             st.subheader("Biggest gaps")
             for status, score, text, evidence in sorted(gaps, key=lambda r: r[1])[:5]:
                 st.write(f"**{score:.2f}** | {text}")
+
+            skills = load_skills()
+            gap_text = " ".join(r[2] for r in gaps)
+            gap_skills = sorted(find_skills(gap_text, skills))
+            if gap_skills:
+                st.subheader("Skills to learn or mention")
+                st.write(", ".join(gap_skills))
+                st.caption("If you already have one of these, add it to your resume with a concrete example. If not, a small project is the fastest way to learn it.")
 
             with st.expander(f"Partial matches ({len(partial)})"):
                 for status, score, text, evidence in partial:

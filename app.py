@@ -6,10 +6,12 @@ st.title("Resume-to-Job Matcher")
 st.write("Paste your resume and a job description to see how well they match.")
 st.caption("Tip: leave out your phone number, email and address. The matcher doesn't need them.")
 
-resume_text = st.text_area("Your resume", height=250)
-job_text = st.text_area("Job description", height=250)
+with st.form("match_form"):
+    resume_text = st.text_area("Your resume", height=250)
+    job_text = st.text_area("Job description", height=250)
+    submitted = st.form_submit_button("Match")
 
-if st.button("Match"):
+if submitted:
     if len(resume_text.split()) < 10 or len(job_text.split()) < 10:
         st.warning("Please paste a bit more text into both boxes.")
     else:

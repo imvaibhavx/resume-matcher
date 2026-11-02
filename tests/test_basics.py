@@ -47,3 +47,21 @@ def test_headings_and_pay_lines_are_dropped():
 def test_empty_job_does_not_crash():
     results = analyze("I build data dashboards with SQL and Excel.", "")
     assert results == []
+
+def test_empty_resume_does_not_crash():
+    job = "Experience building machine learning models in Python."
+    assert analyze("", job) == []
+
+
+def test_job_with_only_filtered_lines_returns_empty():
+    job = ("WHAT WE ARE LOOKING FOR IN A CANDIDATE\n"
+           "Compensation: INR 25,000 per month")
+    assert analyze("I build data dashboards with SQL and Excel.", job) == []
+
+
+def test_gaps_have_no_evidence():
+    resume = "I build data dashboards with SQL and Excel for a retail team."
+    job = "Prepare fresh pasta and sauces daily in a busy restaurant kitchen."
+    for status, score, text, evidence in analyze(resume, job):
+        if status == "GAP":
+            assert evidence == ""

@@ -49,8 +49,10 @@ def match_requirements(job_chunks, resume_chunks, resume_emb):
 
 def analyze(resume_text, job_text):
     resume_chunks = get_resume_chunks(resume_text)
-    resume_emb = model.encode(resume_chunks)
     job_chunks = get_job_chunks(job_text)
+    if not resume_chunks or not job_chunks:
+        return []
+    resume_emb = model.encode(resume_chunks)
     return match_requirements(job_chunks, resume_chunks, resume_emb)
 
 

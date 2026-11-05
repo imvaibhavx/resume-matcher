@@ -32,6 +32,21 @@ Job applications are a guessing game: you never know what's missing until you ge
 
 Just getting started. Building in public, one small commit at a time.
 
+## Run it yourself
+
+**With Python:**
+```
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+**With Docker:**
+```
+docker build -t resume-matcher .
+docker run -p 8501:8501 resume-matcher
+```
+Then open http://localhost:8501. The first Match is slower, because the model downloads once.
+
 ## Testing
 
 10 automated tests (pytest) check that the matcher behaves sensibly:

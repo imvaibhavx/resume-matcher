@@ -7,7 +7,7 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 
 SKIP_STARTS = ("compensation", "work hours", "location", "employment", "remote work",
                "minimum cgpa", "only students", "no salary", "experience level",
-               "potential next step", "must be available", "job title", "department", "work arrangement")
+               "potential next step", "must be available", "job title", "department", "work arrangement", "what we", "what you", "about the", "key responsibilities")
 
 
 def label(score):

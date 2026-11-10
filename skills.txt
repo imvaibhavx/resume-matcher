@@ -1,40 +1,57 @@
+llms
+pytorch
+tensorflow
+jax
+scikit-learn
+pyspark
+polars
+numpy
+pandas
 python
 sql
+r
+machine learning
+deep learning
+computer vision
+video analysis
+supervised learning
+unsupervised learning
+loss functions
+bias mitigation
+feature engineering
+statistics
+regression analysis
+hypothesis testing
+a/b testing
+exploratory data analysis
+data cleaning
+data visualization
+data modeling
+etl processes
+data storytelling
+dashboards
+reporting
+kpi development
 excel
 tableau
 power bi
-pandas
-machine learning
-git
-docker
-aws
-statistics
-data cleaning
-data visualization
-dashboards
-reporting
-snowflake
-bigquery
-redshift
-mailchimp
-social media
-r
-postgresql
-mysql
-microsoft power bi
 looker
 google analytics
-a/b testing
-hypothesis testing
-regression analysis
-exploratory data analysis
-etl processes
-data modeling
+mailchimp
+social media
+cloud computing
+aws
+snowflake
+bigquery
+amazon redshift
+postgresql
+mysql
 dbt
 apache airflow
-spark
-data storytelling
-kpi development
+apache spark
+git
+docker
+data engineering
 stakeholder management
 presentation skills
 documentation

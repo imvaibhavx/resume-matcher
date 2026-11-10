@@ -1,6 +1,9 @@
 # Resume-to-Job Matcher
 **Live demo:** [resumematcherai.streamlit.app](https://resumematcherai.streamlit.app)
 
+![Pasting a resume and a job description](docs/input.png)
+![Match results with gaps and skills to learn](docs/results.png)
+
 An AI tool that compares your resume against a job description and tells you how well you match, which skills you're missing, and what to improve before you apply.
 
 ## Why I'm building this

@@ -1,8 +1,17 @@
 import re
 from pathlib import Path
 
+def clean_text(text):
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
+    text = re.sub(r"^\s{0,3}#{1,6}\s*", "", text, flags=re.MULTILINE)
+    text = re.sub(r"(\*\*|__)(.*?)\1", r"\2", text)
+    text = re.sub(r"(?<!\w)\*(\S[^*\n]*?)\*(?!\w)", r"\1", text)
+    text = text.replace("`", "")
+    text = re.sub(r"^\s*(?:[-*•·]|\d+[.)])\s+", "", text, flags=re.MULTILINE)
+    return text
 
 def split_into_chunks(text, min_words=4):
+    text = clean_text(text)
     parts = re.split(r"[\n\r]+|(?<=[.!?])\s+", text)
     chunks = [p.strip(" -•*\t") for p in parts]
     return [c for c in chunks if len(c.split()) >= min_words]

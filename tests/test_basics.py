@@ -1,6 +1,7 @@
 from aliases import expand_aliases
 from semantic import analyze, label
 from semantic import get_job_chunks
+from chunks import split_into_chunks
 
 def test_alias_expands_ml():
     assert "machine learning" in expand_aliases("I know ML")
@@ -65,3 +66,11 @@ def test_gaps_have_no_evidence():
     for status, score, text, evidence in analyze(resume, job):
         if status == "GAP":
             assert evidence == ""
+
+def test_markdown_symbols_are_removed():
+    text = ("### Requirements\n"
+            "- **Strong** SQL skills for reporting work.\n"
+            "* Experience with [Tableau](https://example.com) dashboards.")
+    chunks = split_into_chunks(text)
+    assert all("*" not in c and "#" not in c and "](" not in c for c in chunks)
+    assert "Strong SQL skills for reporting work." in chunks

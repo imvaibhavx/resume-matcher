@@ -7,7 +7,7 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 
 SKIP_STARTS = ("compensation", "work hours", "location", "employment", "remote work",
                "minimum cgpa", "only students", "no salary", "experience level",
-               "potential next step", "must be available")
+               "potential next step", "must be available", "job title", "department", "work arrangement")
 
 
 def label(score):
@@ -23,7 +23,7 @@ def get_job_chunks(text):
     chunks = [c for c in chunks
               if not c.endswith(":")
               and not c.isupper()
-              and "|" not in c
+              and "|" not in c and "·" not in c
               and not c.lower().startswith(SKIP_STARTS)]
     return [expand_aliases(c) for c in chunks]
 

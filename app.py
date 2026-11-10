@@ -30,9 +30,12 @@ if submitted:
             col2.metric("Partial", len(partial))
             col3.metric("Gaps", len(gaps))
 
-            st.subheader("Biggest gaps")
-            for status, score, text, evidence in sorted(gaps, key=lambda r: r[1])[:5]:
-                st.write(f"**{score:.2f}** | {text}")
+            if gaps:
+                st.subheader("Biggest gaps")
+                for status, score, text, evidence in sorted(gaps, key=lambda r: r[1])[:5]:
+                    st.write(f"**{score:.2f}** | {text}")
+            else:
+                st.success("No gaps found for this job.")
 
             skills = load_skills()
             gap_text = " ".join(r[2] for r in gaps)

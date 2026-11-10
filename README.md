@@ -47,6 +47,26 @@ docker run -p 8501:8501 resume-matcher
 ```
 Then open http://localhost:8501. The first Match is slower, because the model downloads once.
 
+## Known limitations
+
+- **Cutoffs are hand-picked.** COVERED (0.50 and up) and PARTIAL (0.35 and up) are starting values, not tuned on a large dataset.
+- **Lines that mix several skills get overcredited.** "Python and PyTorch, TensorFlow, Jax" can score as covered when only Python is on the resume.
+- **Generic resume sentences attract generic job lines**, which can create false partial matches.
+- **Numbers and eligibility rules** (minimum CGPA, graduation year) can't be judged by embeddings.
+- **Filters are rule-based.** They only remove pay, location and heading lines that match the word lists.
+- **The alias list is hand-made.** Short abbreviations are risky (for example, "CV" can mean curriculum vitae or computer vision).
+- **Text only.** No PDF upload, no OCR, no reading jobs from links.
+- **Headings without a colon or all caps** can still slip through as requirements, since the filters are word lists.
+- **Similar tools count as matches** (for example, Tableau as evidence for Power BI).
+
+## Future work
+
+- Upload resumes as PDF or Word files
+- An LLM judge for covered / partial / gap decisions
+- A learned classifier to separate requirements from company text
+- Read a job description from a URL
+- Bake the model into the Docker image for faster startup
+
 ## Testing
 
 10 automated tests (pytest) check that the matcher behaves sensibly:
